@@ -34,7 +34,7 @@ fn make_request(url: &str) -> Result<String, reqwest::Error> {
 
 fn get_milestones() -> Result<Value, serde_json::Error> {
     let url = format!("{}/Milestones/", BASE);
-    let resp = make_request(&url).unwrap();
+    let content = make_request(&url).unwrap();
     let data: Value = serde_json::from_str(&content)?;
     Ok(data["Response"].clone())
 }
@@ -44,6 +44,14 @@ fn get_milestone_details(milestone_hash: &str) -> Result<Value, serde_json::Erro
     let content = make_request(&url).unwrap();
     let data: Value = serde_json::from_str(&content)?;
     Ok(data["Response"].clone())
+}
+
+
+pub struct QuestStub;
+
+pub struct Milestone {
+    about: String,
+    available_quests: Vec<QuestStub>
 }
 
 

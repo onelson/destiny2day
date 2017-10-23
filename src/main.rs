@@ -1,4 +1,3 @@
-#![feature(const_fn, drop_types_in_const)]
 #![feature(plugin)]
 #![plugin(rocket_codegen)]
 
